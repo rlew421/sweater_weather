@@ -1,5 +1,5 @@
 class GoogleGeocodingService
-  def forecast_by_city(city)
+  def coordinates_by_city(city)
     get_json("?key=#{ENV['GOOGLE_GEOCODING_API_KEY']}&address=#{city}")
   end
 
