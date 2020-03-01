@@ -1,10 +1,14 @@
 class GoogleGeocodingService
   def forecast_by_city(city)
-    response = conn.get("?key=#{ENV['GOOGLE_GEOCODING_API_KEY']}&address=#{city}")
-    parsed = JSON.parse(response.body)
+    get_json("?key=#{ENV['GOOGLE_GEOCODING_API_KEY']}&address=#{city}")
   end
 
   private
+
+  def get_json(url)
+    response = conn.get(url)
+    JSON.parse(response.body)
+  end
 
   def conn
     Faraday.new(url: "https://maps.googleapis.com/maps/api/geocode/json") do |faraday|
