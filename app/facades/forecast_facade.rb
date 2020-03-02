@@ -12,10 +12,9 @@ class ForecastFacade
     coordinates = Coordinate.new(coordinate_data)
   end
 
-  def get_current_forecast
+  def get_forecast
     service = DarkskyService.new
     forecast_data = service.forecast_by_coordinates(get_coordinates)
-    binding.pry
     forecast = Forecast.new(forecast_data)
   end
 end
