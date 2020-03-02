@@ -9,9 +9,11 @@ RSpec.describe GoogleGeocodingService do
  # end
 
  it "returns estimated travel time" do
-   origin_coordinates = 39.7392358,-104.990251
-   destination_coordinates = 38.2544472,-104.6091409
-   search = subject.estimated_travel_time(origin_coordinates, destination_coordinates)
+   origin_location = "denver,co"
+   destination_location = "pueblo,co"
+   # origin_coordinates = 39.7392358,-104.990251
+   # destination_coordinates = 38.2544472,-104.6091409
+   search = subject.estimated_travel_time(origin_location, destination_location)
    expect(search).to be_a Hash
    expect(search["text"]).to eq("1 hour 46 mins")
    expect(search["value"]).to eq(6382)
