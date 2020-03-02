@@ -15,8 +15,4 @@ class GoogleGeocodingService
       faraday.adapter Faraday.default_adapter
     end
   end
-
-  def directions_conn
-    # ...
-  end
 end
