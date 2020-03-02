@@ -11,7 +11,7 @@ class Munchie
   def parse_restaurant_data(restaurant_data)
     {
       name: restaurant_data["businesses"].first["name"],
-      address: restaurant_data["businesses"].first["location"]
+      address: restaurant_data["businesses"].first["location"]["display_address"].first
     }
   end
 end
