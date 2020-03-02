@@ -1,12 +1,17 @@
 class Munchie
-  attr_reader :id, :current_time, :expected_weather, :estimated_travel_time, :estimated_arrival_time, :restaurant_data
+  attr_reader :id, :forecast, :travel_time, :restaurant
 
   def initialize(forecast_data, travel_time_data, restaurant_data)
     @id = nil
-    @current_time = Time.now.to_i
-    @expected_weather = forecast_data["hourly"]["data"][0]
-    @estimated_travel_time = travel_time_data
-    @estimated_arrival_time = @current_time + @estimated_travel_time["value"]
-    @restaurant_data = restaurant_data["businesses"].first
+    @forecast = forecast_data["hourly"]["data"][0]["summary"]
+    @travel_time = travel_time_data["text"]
+    @restaurant = parse_restaurant_data(restaurant_data)
+  end
+
+  def parse_restaurant_data(restaurant_data)
+    {
+      name: restaurant_data["businesses"].first["name"],
+      address: restaurant_data["businesses"].first["location"]
+    }
   end
 end
