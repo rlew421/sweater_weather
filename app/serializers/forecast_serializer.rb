@@ -3,5 +3,6 @@ class ForecastSerializer
   attributes  :id,
               :timezone,
               :currently,
-              :daily
+              :daily,
+              :hourly
 end
