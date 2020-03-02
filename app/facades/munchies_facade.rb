@@ -32,16 +32,7 @@ class MunchiesFacade
 
     travel_time_data = results["routes"][0]["legs"][0]["duration"]
 
-    yelp_connection = Faraday.new(url: "https://api.yelp.com/v3/businesses/search") do |faraday|
-      faraday.headers["Authorization"] = "Bearer #{ENV['YELP_API_KEY']}"
-      faraday.adapter Faraday.default_adapter
-    end
-
-    response_2 = yelp_connection.get("?latitude=#{destination_coordinates.lat}&longitude=#{destination_coordinates.lng}&term=#{@food_type}")
-
-    restaurant_results = JSON.parse(response_2.body)
-
-    restaurant_data = restaurant_results
+    restaurant_data = YelpService.new.restaurant_by_coordinates_and_type(origin_coordinates, destination_coordinates, @food_type)
 
     munchies_results = Munchie.new(forecast_data, travel_time_data, restaurant_data)
   end
