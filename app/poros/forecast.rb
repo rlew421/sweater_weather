@@ -3,14 +3,16 @@ class Forecast
               :timezone,
               :currently,
               :daily,
-              :hourly
+              :hourly,
+              :image
 
-  def initialize(forecast_data)
+  def initialize(forecast_data, image_data)
     @id = nil
     @timezone = forecast_data["timezone"]
     @currently = parse_current_forecast(forecast_data["currently"])
     @daily = parse_daily_forecast(forecast_data["daily"])
     @hourly = parse_hourly_forecast(forecast_data["hourly"])
+    @image = image_data.first["urls"]["regular"]
   end
 
   def parse_current_forecast(current_forecast_data)
