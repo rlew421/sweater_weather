@@ -1,6 +1,6 @@
 class YelpService
-  def restaurant_by_coordinates_and_type(origin_coordinates, destination_coordinates, food_type)
-    get_json("?latitude=#{destination_coordinates.lat}&longitude=#{destination_coordinates.lng}&term=#{food_type}")
+  def restaurant_by_coordinates_and_type(destination_coordinates, food_type, expected_time)
+    get_json("?latitude=#{destination_coordinates.lat}&longitude=#{destination_coordinates.lng}&term=#{food_type}&open_at=#{expected_time}")
   end
 
   private

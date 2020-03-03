@@ -38,7 +38,7 @@ class MunchiesFacade
 
   def get_munchies_travel_results
     forecast_data = DarkskyService.new.forecast_by_coordinates_and_time(destination_coordinates, arrival_time)
-    restaurant_data = YelpService.new.restaurant_by_coordinates_and_type(origin_coordinates, destination_coordinates, @food_type)
+    restaurant_data = YelpService.new.restaurant_by_coordinates_and_type(destination_coordinates, @food_type, arrival_time)
     Munchie.new(forecast_data, travel_time_data, restaurant_data)
   end
 end
