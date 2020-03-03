@@ -26,19 +26,18 @@ class MunchiesFacade
   end
 
   def travel_time_data
-    directions_connection = Faraday.new(url: "https://maps.googleapis.com/maps/api/directions/json") do |faraday|
-      faraday.adapter Faraday.default_adapter
-    end
-    response_1 = directions_connection.get("?origin=#{origin_coordinates.lat},#{origin_coordinates.lng}&destination=#{destination_coordinates.lat},#{destination_coordinates.lng}&key=#{ENV['GOOGLE_GEOCODING_API_KEY']}")
+    GoogleGeocodingService.new.estimated_travel_time(origin_coordinates, destination_coordinates)
+  end
 
-    results = JSON.parse(response_1.body)
+  def forecast_data
+    DarkskyService.new.forecast_by_coordinates_and_time(destination_coordinates, arrival_time)
+  end
 
-    travel_time_data = results["routes"][0]["legs"][0]["duration"]
+  def restaurant_data
+    YelpService.new.restaurant_by_coordinates_and_type(destination_coordinates, @food_type, arrival_time)
   end
 
   def get_munchies_travel_results
-    forecast_data = DarkskyService.new.forecast_by_coordinates_and_time(destination_coordinates, arrival_time)
-    restaurant_data = YelpService.new.restaurant_by_coordinates_and_type(destination_coordinates, @food_type, arrival_time)
-    Munchie.new(forecast_data, travel_time_data, restaurant_data)
+    Munchie.new(@destination, forecast_data, travel_time_data, restaurant_data)
   end
 end
