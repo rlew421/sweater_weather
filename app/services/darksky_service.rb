@@ -3,6 +3,10 @@ class DarkskyService
     get_json("#{ENV['DARKSKY_API_KEY']}/#{coordinates.lat},#{coordinates.lng}")
   end
 
+  def forecast_by_coordinates_and_time(coordinates, time)
+    get_json("#{ENV['DARKSKY_API_KEY']}/#{coordinates.lat},#{coordinates.lng},#{time}")
+  end
+
   private
 
   def get_json(url)
