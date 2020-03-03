@@ -1,8 +1,9 @@
 class Munchie
-  attr_reader :id, :forecast, :travel_time, :restaurant
+  attr_reader :id, :end_location, :forecast, :travel_time, :restaurant
 
-  def initialize(forecast_data, travel_time_data, restaurant_data)
+  def initialize(destination, forecast_data, travel_time_data, restaurant_data)
     @id = nil
+    @end_location = destination
     @forecast = forecast_data["hourly"]["data"][0]["summary"]
     @travel_time = travel_time_data["text"]
     @restaurant = parse_restaurant_data(restaurant_data)
