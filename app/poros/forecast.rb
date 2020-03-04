@@ -36,12 +36,11 @@ class Forecast
   end
 
   def parse_hourly_forecast(hourly_forecast_data)
-    {
-      summary: hourly_forecast_data["summary"],
-      icon: hourly_forecast_data["icon"],
-      time: hourly_forecast_data["data"].first["time"],
-      temperature: hourly_forecast_data["data"].first["temperature"],
-      humidity: hourly_forecast_data["data"].first["humidity"]
-    }
+    number_of_hours = 7
+    array_of_hourly_data = hourly_forecast_data["data"][1..number_of_hours]
+
+    result = array_of_hourly_data.map do |hourly_data|
+      HourlyForecast.new(hourly_data)
+    end
   end
 end
