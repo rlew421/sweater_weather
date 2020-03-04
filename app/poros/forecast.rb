@@ -27,13 +27,12 @@ class Forecast
   end
 
   def parse_daily_forecast(daily_forecast_data)
-    {
-      summary: daily_forecast_data["summary"],
-      icon: daily_forecast_data["icon"],
-      temperature_high: daily_forecast_data["data"].first["temperatureHigh"],
-      temperature_low: daily_forecast_data["data"].first["temperatureLow"],
-      time: daily_forecast_data["data"].first["time"]
-    }
+    number_of_days = 5
+    array_of_daily_data = daily_forecast_data["data"][1..number_of_days]
+
+    array_of_daily_data.map do |day_data|
+      DailyForecast.new(day_data)
+    end
   end
 
   def parse_hourly_forecast(hourly_forecast_data)
