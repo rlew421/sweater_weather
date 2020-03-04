@@ -4,7 +4,7 @@ class Api::V1::SessionsController < ApplicationController
     if logs_in_successfully?(user)
       render json: UserSerializer.new(user), status: 200
     else
-      render json: { errors: user.errors.full_messages.to_sentence }, status: 401
+      render json: { description: "Bad Credentials" }, status: 401
     end
   end
 
