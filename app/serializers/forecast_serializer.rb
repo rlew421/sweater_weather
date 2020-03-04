@@ -4,6 +4,5 @@ class ForecastSerializer
               :timezone,
               :currently,
               :daily,
-              :hourly,
-              :image
+              :hourly
 end
