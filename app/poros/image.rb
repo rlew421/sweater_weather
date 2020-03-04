@@ -3,6 +3,6 @@ class Image
 
   def initialize(image_data)
     @id = nil
-    @image_url = image_data.first["urls"]["regular"]
+    @image_url = image_data["results"].first["urls"]["regular"]
   end
 end
