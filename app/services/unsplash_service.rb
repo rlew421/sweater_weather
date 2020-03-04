@@ -1,6 +1,6 @@
 class UnsplashService
   def image_by_location(city, state)
-    get_json("/photos?query=#{city}&query=#{state}")
+    get_json("/search/photos?query=#{city}&query=#{state}")
   end
 
   private
@@ -11,7 +11,7 @@ class UnsplashService
   end
 
   def conn
-    Faraday.new(url: "https://api.unsplash.com/search") do |faraday|
+    Faraday.new(url: "https://api.unsplash.com") do |faraday|
       faraday.headers["Authorization"] = "Client-ID #{ENV['UNSPLASH_API_KEY']}"
       faraday.adapter Faraday.default_adapter
     end
