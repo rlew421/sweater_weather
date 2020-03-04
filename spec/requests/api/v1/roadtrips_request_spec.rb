@@ -18,7 +18,11 @@ RSpec.describe "Roadtrips API" do
     post '/api/v1/road_trip', params: body
 
     roadtrip_response = JSON.parse(response.body)
-    expect(road_trip.response).to be_successful
+
+    expect(response).to be_successful
+    expect(roadtrip_response["data"]["attributes"]["origin"]).to eq("denver,co")
+    expect(roadtrip_response["data"]["attributes"]["destination"]).to eq("pueblo,co")
+    expect(roadtrip_response["data"]["attributes"]["travel_time"]).to eq("1 hour 46 mins")
   end
 
   def create_user
