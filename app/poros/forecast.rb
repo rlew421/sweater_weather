@@ -30,7 +30,7 @@ class Forecast
     number_of_hours = 7
     array_of_hourly_data = hourly_forecast_data["data"][1..number_of_hours]
 
-    result = array_of_hourly_data.map do |hourly_data|
+    array_of_hourly_data.map do |hourly_data|
       HourlyForecast.new(hourly_data)
     end
   end
