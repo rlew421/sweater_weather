@@ -14,16 +14,7 @@ class Forecast
   end
 
   def parse_current_forecast(current_forecast_data)
-    {
-      summary: current_forecast_data["summary"],
-      icon: current_forecast_data["icon"],
-      temperature: current_forecast_data["temperature"],
-      apparent_temperature: current_forecast_data["apparentTemperature"],
-      humidity: current_forecast_data["humidity"],
-      visibility: current_forecast_data["visibility"],
-      uv_index: current_forecast_data["uvIndex"],
-      time: current_forecast_data["time"]
-    }
+    CurrentForecast.new(current_forecast_data)
   end
 
   def parse_daily_forecast(daily_forecast_data)
