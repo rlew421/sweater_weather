@@ -14,16 +14,7 @@ class Forecast
   end
 
   def parse_current_forecast(current_forecast_data)
-    {
-      summary: current_forecast_data["summary"],
-      icon: current_forecast_data["icon"],
-      temperature: current_forecast_data["temperature"],
-      apparent_temperature: current_forecast_data["apparentTemperature"],
-      humidity: current_forecast_data["humidity"],
-      visibility: current_forecast_data["visibility"],
-      uv_index: current_forecast_data["uvIndex"],
-      time: current_forecast_data["time"]
-    }
+    CurrentForecast.new(current_forecast_data)
   end
 
   def parse_daily_forecast(daily_forecast_data)
@@ -39,7 +30,7 @@ class Forecast
     number_of_hours = 7
     array_of_hourly_data = hourly_forecast_data["data"][1..number_of_hours]
 
-    result = array_of_hourly_data.map do |hourly_data|
+    array_of_hourly_data.map do |hourly_data|
       HourlyForecast.new(hourly_data)
     end
   end
