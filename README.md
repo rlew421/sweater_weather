@@ -13,7 +13,7 @@
   <h3 align="center">Sweater Weather</h3>
 
   <p align="center">
-    A JSON API that returns forecasts and background images for a city and estimated travel time between an origin and destination through four RESTful routes.
+    A JSON API that returns forecasts and background images for a city and estimated travel time between an origin and destination through five RESTful routes.
   </p>
 </p>
 
