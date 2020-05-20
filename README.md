@@ -113,7 +113,7 @@ rails s
 ```
 
 Use Postman to make requests to the API. For the production application, prefix the following requests with
-```https://floating-lake-73630.herokuapp.com/```. Examples are provided.
+```https://floating-lake-73630.herokuapp.com```. Examples are provided.
 
 1. Retrieve weather for a city (hourly, daily, and weekly forecasts)
 ```
@@ -133,7 +133,7 @@ POST /api/v1/users
 ```
 ![Registration Postman Request](https://user-images.githubusercontent.com/48839191/82381235-11011480-99e7-11ea-8633-59a59d7cb279.png)
 
-4. Log in as a user using your unique API key. Email and password must be passed through in request body as shown.
+4. Log in as a user. Email and password must be passed through in request body as shown.
 ```
 POST /api/v1/sessions
 ```
